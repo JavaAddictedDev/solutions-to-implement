@@ -1,34 +1,255 @@
-1. **Sustainable Supply Chain Tracker**: 
-   - Problem: Lack of transparency in product sustainability and ethical sourcing.
-   - Solution: Develop a system using Java and Spring Boot that tracks products from source to consumer, leveraging blockchain on AWS. Use Angular for an interactive supply chain visualization.
-   - Value: Helps companies prove their ethical and sustainable practices, appealing to conscious consumers.
+# Sustainable Supply Chain Tracker
+## System Documentation
+Version 1.0 | November 2024
 
-2. **AI-Powered Accessibility Assistant**:
-   - Problem: Digital content often isn't accessible to people with disabilities.
-   - Solution: Create a tool that uses AWS AI services and Java to automatically generate alt text for images, provide real-time closed captions, and suggest accessibility improvements for websites.
-   - Value: Makes the internet more inclusive and helps businesses comply with accessibility regulations.
+## Table of Contents
+1. [Problem Definition](#1-problem-definition)
+2. [Solution Overview](#2-solution-overview)
+3. [Value Proposition](#3-value-proposition)
+4. [System Architecture](#4-system-architecture)
+5. [Entities and Relationships](#5-entities-and-relationships)
+6. [Data Flow](#6-data-flow)
+7. [Technical Specifications](#7-technical-specifications-and-standards)
+8. [Usage Guide](#8-usage-guide)
+9. [Potential Expansions](#9-potential-expansions-and-scalability)
 
-3. **Predictive Healthcare Resource Allocator**:
-   - Problem: Inefficient distribution of healthcare resources, especially during crises.
-   - Solution: Build a system using Java, Spring Boot, and AWS SageMaker to predict healthcare needs based on various data sources. Use Angular for an intuitive dashboard for healthcare administrators.
-   - Value: Optimizes resource allocation in healthcare, potentially saving lives and reducing costs.
+## 1. Problem Definition
 
-4. **Smart City Waste Management**:
-   - Problem: Inefficient waste collection in urban areas.
-   - Solution: Develop an IoT-based system using AWS IoT Core, Java for backend processing, and Angular for a municipal dashboard. Use sensors to monitor waste levels and optimize collection routes.
-   - Value: Reduces city operating costs, improves sanitation, and lowers environmental impact.
+### Current Challenges
+Traditional supply chains face several critical challenges that impact sustainability and transparency:
 
-5. **Personalized Learning Platform**:
-   - Problem: One-size-fits-all approach to online education.
-   - Solution: Create an adaptive learning system using Java and Spring Boot, with AWS services for scalability. Implement machine learning to personalize content and Angular for an engaging user interface.
-   - Value: Improves learning outcomes by tailoring education to individual needs and learning styles.
+* **Limited Traceability**
+  - Difficulty tracking products from origin to consumer
+  - Lack of verification for sustainability claims
+  - Incomplete visibility into supplier practices
 
-6. **Community Disaster Response Coordinator**:
-   - Problem: Disorganized community response during natural disasters.
-   - Solution: Build a real-time coordination platform using Java, Spring Boot, and AWS services for scalability and reliability. Use Angular for a responsive web app that works on various devices.
-   - Value: Improves community resilience and potentially saves lives during emergencies.
+* **Environmental Impact**
+  - Carbon footprint measurement gaps
+  - Inefficient resource utilization
+  - Waste management issues
 
-7. **Small Business AI Advisor**:
-   - Problem: Small businesses struggle to access affordable, quality business advice.
-   - Solution: Develop an AI-powered system using Java, Spring Boot, and AWS AI services that can analyze a business's data and provide tailored advice. Use Angular for an intuitive interface.
-   - Value: Democratizes access to high-quality business insights, helping small businesses thrive.
+* **Data Reliability**
+  - Manual record-keeping prone to errors
+  - Fragmented data across multiple systems
+  - Risk of fraudulent sustainability claims
+
+### Impact Areas
+1. **Business Operations**
+   - Increased operational costs
+   - Compliance risks
+   - Reputation management challenges
+
+2. **Consumer Trust**
+   - Skepticism about sustainability claims
+   - Limited access to product origin information
+   - Growing demand for transparency
+
+3. **Environmental Sustainability**
+   - Difficulty measuring environmental impact
+   - Challenges in implementing circular economy practices
+   - Limited ability to verify green initiatives
+
+## 2. Solution Overview
+
+The Sustainable Supply Chain Tracker leverages blockchain technology and cloud infrastructure to create a transparent, immutable record of product journeys and sustainability practices.
+
+### Core Components
+
+1. **Blockchain-Based Tracking**
+   - Immutable ledger for product movement
+   - Smart contracts for automated compliance
+   - Decentralized verification system
+
+2. **Sustainability Metrics**
+   - Carbon footprint calculation
+   - Resource utilization tracking
+   - Waste management metrics
+
+3. **Certification Management**
+   - Digital verification of sustainability certificates
+   - Real-time compliance monitoring
+   - Automated alert system
+
+## 3. Value Proposition
+
+### Business Benefits
+* Reduced operational costs through improved efficiency
+* Enhanced brand reputation and trust
+* Automated compliance management
+* Real-time visibility into supply chain operations
+* Data-driven decision making capabilities
+
+### Consumer Benefits
+* Access to verified product origin information
+* Transparency in sustainability practices
+* Ability to make informed purchasing decisions
+* Trust in sustainability claims
+* Direct connection to product journey
+
+### Environmental Benefits
+* Improved resource utilization
+* Reduced carbon footprint
+* Enhanced waste management
+* Support for circular economy initiatives
+* Verified sustainability practices
+
+## 4. System Architecture
+
+### Frontend Layer (Angular)
+```
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── product-tracker/
+│   │   │   ├── sustainability-dashboard/
+│   │   │   └── supplier-portal/
+│   │   ├── services/
+│   │   │   ├── blockchain.service.ts
+│   │   │   └── data.service.ts
+│   │   └── shared/
+│   └── assets/
+```
+
+### Backend Layer (Spring Boot)
+```
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── controllers/
+│   │   │   ├── services/
+│   │   │   ├── models/
+│   │   │   └── config/
+│   │   └── resources/
+│   └── test/
+```
+
+### AWS Infrastructure
+* **Compute:** Amazon ECS with Fargate
+* **Storage:** Amazon S3, Amazon RDS
+* **Blockchain:** Amazon Managed Blockchain
+* **Security:** AWS KMS, IAM
+* **Monitoring:** CloudWatch, X-Ray
+
+## 5. Entities and Relationships
+
+### Core Entities
+
+#### Product
+```json
+{
+  "productId": "UUID",
+  "name": "string",
+  "description": "string",
+  "category": "string",
+  "sustainabilityScore": "float",
+  "currentLocation": "Location",
+  "certifications": "Certification[]"
+}
+```
+
+#### Supplier
+```json
+{
+  "supplierId": "UUID",
+  "name": "string",
+  "location": "Location",
+  "sustainabilityRating": "float",
+  "certifications": "Certification[]",
+  "products": "Product[]"
+}
+```
+
+#### Transaction
+```json
+{
+  "transactionId": "UUID",
+  "timestamp": "DateTime",
+  "productId": "UUID",
+  "fromSupplierId": "UUID",
+  "toSupplierId": "UUID",
+  "sustainabilityMetrics": "SustainabilityMetrics"
+}
+```
+
+## 6. Data Flow
+
+### Data Entry Process
+1. Supplier inputs product data through web portal
+2. Data validation and enrichment
+3. Blockchain transaction creation
+4. Smart contract execution
+5. Data storage and indexing
+
+### Data Retrieval Process
+1. User requests product information
+2. Frontend queries backend API
+3. Backend retrieves blockchain data
+4. Data aggregation and processing
+5. Response formatting and delivery
+
+## 7. Technical Specifications and Standards
+
+### Environmental Standards
+* ISO 14001 - Environmental Management
+* GHG Protocol - Carbon Accounting
+* ISO 50001 - Energy Management
+
+### Technical Standards
+* REST API - OpenAPI 3.0
+* OAuth 2.0 Authentication
+* HTTPS/TLS 1.3
+* JSON-LD for semantic data
+
+### API Endpoints
+```
+POST /api/v1/products
+GET  /api/v1/products/{id}
+POST /api/v1/transactions
+GET  /api/v1/sustainability/metrics
+```
+
+## 8. Usage Guide
+
+### Supplier Onboarding
+1. Register account
+2. Complete verification process
+3. Upload certifications
+4. Configure tracking parameters
+5. Begin product tracking
+
+### Product Tracking
+1. Scan or enter product ID
+2. View real-time location
+3. Access sustainability metrics
+4. Verify certifications
+5. Generate reports
+
+### Sustainability Reporting
+1. Select date range
+2. Choose metrics
+3. Generate visualization
+4. Export data
+5. Share reports
+
+## 9. Potential Expansions and Scalability
+
+### Industry Applications
+* Food and Agriculture
+* Pharmaceuticals
+* Fashion and Textiles
+* Electronics
+* Construction Materials
+
+### Future Enhancements
+* IoT Integration
+* AI/ML Analytics
+* Mobile Applications
+* Extended Reporting
+* Cross-Chain Integration
+
+### Scaling Considerations
+* Geographic Expansion
+* Multi-Language Support
+* Custom Metrics
+* Additional Certifications
+* Enhanced Analytics
